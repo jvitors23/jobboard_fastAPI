@@ -4,7 +4,7 @@ services:
   db:
     image: postgres:10-alpine
     environment:
-      - POSTGRES_DB=jobboard_app
+      - POSTGRES_DB=jobboard_db
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=supersecretpassword
     ports:
@@ -17,7 +17,8 @@ services:
       - "8000:8000"
     volumes:
       - ./app:/app
-    command: sh -c "./wait_db.sh db:5432 -- python main.py"
+    command: sh -c "./wait_db.sh db:5432 --
+      uvicorn main:app --reload --host 0.0.0.0 --port 8000 --reload"
     env_file:
       - .env
     depends_on:

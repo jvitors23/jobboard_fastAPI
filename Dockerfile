@@ -20,4 +20,3 @@ RUN mkdir /app
 WORKDIR /app
 COPY ./app /app
 
-RUN chmod 755 /app/entrypoint.sh
