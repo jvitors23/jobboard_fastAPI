@@ -1,15 +1,20 @@
-FROM python:3.7-alpine
+FROM python:3.8
 MAINTAINER JvitorS23
 
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONUNBUFFERED=1
+
+RUN apt-get update --yes --quiet && \
+	apt-get upgrade -y && \
+	apt-get install --yes --quiet --no-install-recommends \
+		build-essential \
+		libpq-dev \
+		libmariadbclient-dev \
+		libjpeg62-turbo-dev \
+		zlib1g-dev \
+		libwebp-dev
 
 COPY ./requirements.txt /requirements.txt
-RUN apk add --update --no-cache postgresql-client
-RUN apk add --update --no-cache --virtual .tmp-build-deps \
-        gcc libc-dev linux-headers postgresql-dev musl-dev zlib zlib-dev
 RUN pip install -r /requirements.txt
-RUN apk del .tmp-build-deps
-RUN apk update && apk add bash
 
 RUN mkdir /app
 WORKDIR /app
