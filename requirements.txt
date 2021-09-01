@@ -3,3 +3,5 @@ uvicorn==0.13.4
 SQLAlchemy==1.4.11
 python-dotenv==0.17.0
 psycopg2==2.8.6
+pydantic==1.8.1
+passlib==1.7.4
