@@ -12,6 +12,6 @@ def create_new_job(job: JobCreate, session: Session, owner_id: int) -> Job:
     return job
 
 
-def retrieve_job(id: int, session: Session):
-    job = session.query(Job).filter(Job.id == id).first()
+def retrieve_job(job_id: int, session: Session):
+    job = session.query(Job).filter(Job.id == job_id).first()
     return job

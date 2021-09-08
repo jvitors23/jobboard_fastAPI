@@ -3,13 +3,14 @@ import random
 import string
 from schemas.users import UserCreate
 from db.crud.users import create_new_user
+from db.models.users import User
 
 
 def random_lowercase_string() -> str:
     return "".join(random.choices(string.ascii_lowercase, k=32))
 
 
-def create_random_owner(session: Session):
+def create_random_owner(session: Session) -> User:
     email = f'{random_lowercase_string()}@{random_lowercase_string()}.com'
     password = random_lowercase_string()
     user_schema = UserCreate(email=email, username=email, password=password)

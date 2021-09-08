@@ -8,6 +8,6 @@ def test_create_user(client):
             'password': '1231231235'}
     response = client.post('/user/', json.dumps(data))
 
-    assert response.status_code == status.HTTP_200_OK
+    assert response.status_code == status.HTTP_201_CREATED
     assert response.json()['email'] == data['email']
     assert response.json()['is_active']
