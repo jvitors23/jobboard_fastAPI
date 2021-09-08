@@ -22,10 +22,3 @@ def start_application():
 
 
 app = start_application()
-
-
-@app.get("/")
-def hello_api():
-    return {'detail': 'Hello world!'}
-
-
