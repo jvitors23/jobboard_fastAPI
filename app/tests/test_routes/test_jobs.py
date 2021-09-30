@@ -4,8 +4,8 @@ from fastapi import status
 from fastapi.testclient import TestClient
 from schemas.jobs import JobCreate
 from sqlalchemy.orm import Session
-from test.utils.jobs import create_sample_job
-from test.utils.users import create_random_owner
+from tests.utils.jobs import create_sample_job
+from tests.utils.users import create_random_owner
 
 
 def test_job_creation(client):
@@ -19,7 +19,7 @@ def test_job_creation(client):
         'date_posted': '2022-07-20'
     }
 
-    response = client.post('/job/create-job', json.dumps(data))
+    response = client.post('/job/create', json.dumps(data))
     assert response.status_code == status.HTTP_201_CREATED
 
 

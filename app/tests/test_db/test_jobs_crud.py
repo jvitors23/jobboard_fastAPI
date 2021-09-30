@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
 from db.crud.jobs import create_new_job, retrieve_job
 from schemas.jobs import JobCreate
-from test.utils.users import create_random_owner
-from test.utils.jobs import create_sample_job
+from tests.utils.users import create_random_owner
+from tests.utils.jobs import create_sample_job
 
 
 def test_retrieve_job_by_id(db_session: Session):
